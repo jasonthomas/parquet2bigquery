@@ -25,19 +25,19 @@ def main():
 
     parser.add_argument("--cluster-by",
                         help="BigQuery Table Clustering Fields",
-                        nargs="+", required=False)
+                        nargs="+", default=[], required=False)
 
     parser.add_argument("--drop",
                         help="Parquet Fields to Drop",
-                        nargs="+", required=False)
+                        nargs="+", default=[], required=False)
 
     parser.add_argument("--rename",
                         help="Parquet Field Renames",
-                        nargs="+", required=False)
+                        nargs="+", default=[], required=False)
 
     parser.add_argument("--replace",
                         help="Parquet Field Replacement Expressions",
-                        nargs="+", required=False)
+                        nargs="+", default=[], required=False)
 
     parser.add_argument("-c", "--concurrency",
                         help="Process concurrency",

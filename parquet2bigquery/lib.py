@@ -561,7 +561,7 @@ def get_bq_table_partitions(table_id, date_partition_field,
     return reconstruct_paths
 
 
-def remove_loaded_objects(objects, dataset, alias):
+def remove_loaded_objects(objects, dataset, alias, rename):
     """
     Remove objects from list that have already been loaded
     into the BigQuery table. We do this so we don't load objects
@@ -645,7 +645,7 @@ def bulk(bucket_name, prefix, concurrency, glob_load, resume_load,
         object_keys = get_latest_object(bucket_name, prefix)
         if resume_load:
             object_keys = remove_loaded_objects(object_keys,
-                                                _dest_dataset, alias)
+                                                _dest_dataset, alias, rename)
 
         for path, object_key in object_keys.items():
             q.put((bucket_name, path, object_key))
